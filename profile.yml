@@ -17,6 +17,10 @@ jobs:
           git config --global user.name "MeetOwaisAhmed"
           git config --global user.email "meetowaisahmed@gmail.com"
 
+      - name: Authenticate with GitHub
+        run: |
+          git remote set-url origin https://x-access-token:${{ secrets.GH_PAT }}@github.com/MeetOwaisAhmed/MeetOwaisAhmed.git
+
       - name: Pull latest changes
         run: git pull origin main
 
@@ -24,7 +28,7 @@ jobs:
         run: |
           echo "🚀 Profile Last Updated: $(date)" > last-updated.txt
           git add last-updated.txt
-          git commit -m "Updated profile automatically on $(date)"
+          git commit -m "Updated profile automatically on $(date)" || echo "No changes to commit"
           git push origin main
 
       - name: Refresh GitHub Profile README
@@ -43,5 +47,5 @@ jobs:
           echo "</p>" >> README.md
 
           git add README.md
-          git commit -m "Refreshed Profile README"
+          git commit -m "Refreshed Profile README" || echo "No changes to commit"
           git push origin main
