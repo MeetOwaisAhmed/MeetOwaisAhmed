@@ -12,12 +12,36 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Update GitHub Profile Readme
+      - name: Set up Git user
         run: |
           git config --global user.name "MeetOwaisAhmed"
-          git config --global user.email "your-email@example.com"
-          git pull origin main  # Pull latest changes
-          date > last-updated.txt  # Create or update timestamp
+          git config --global user.email "meetowaisahmed@gmail.com"
+
+      - name: Pull latest changes
+        run: git pull origin main
+
+      - name: Update Last Updated Timestamp
+        run: |
+          echo "🚀 Profile Last Updated: $(date)" > last-updated.txt
           git add last-updated.txt
           git commit -m "Updated profile automatically on $(date)"
+          git push origin main
+
+      - name: Refresh GitHub Profile README
+        run: |
+          echo "<p align='center'>" >> README.md
+          echo "  <a href='https://github.com/MeetOwaisAhmed'>" >> README.md
+          echo "    <img src='https://readme-typing-svg.demolab.com?font=Fira+Code&size=22&pause=1000&color=F75C7E&center=true&vCenter=true&width=435&lines=Full-stack+web+and+app+developer+;Experienced+UI%2FUX+Designer;5%2B+years+of+coding+experience+;Always+learning+new+things+' alt='Typing SVG' />" >> README.md
+          echo "  </a>" >> README.md
+          echo "</p>" >> README.md
+          
+          echo "<h3>🔥 Streak Stats</h3>" >> README.md
+          echo "<p align='center'>" >> README.md
+          echo "  <a href='https://github.com/MeetOwaisAhmed'>" >> README.md
+          echo "    <img src='https://streak-stats.demolab.com?user=MeetOwaisAhmed&theme=monokai-metallian&hide_border=true&short_numbers=true' alt='MeetOwaisAhmed streak' />" >> README.md
+          echo "  </a>" >> README.md
+          echo "</p>" >> README.md
+
+          git add README.md
+          git commit -m "Refreshed Profile README"
           git push origin main
