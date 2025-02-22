@@ -6,6 +6,11 @@
 
 
 <h3>🔥 Streak Stats</h3>
-<!-- GitHub Readme Streak Stats - http-->
+<!-- GitHub Readme Streak Stats - https://github.com/MeetOwaisAhmed-->
+<p>
+  <a href="https://github.com/MeetOwaisAhmed">
+<img src="https://streak-stats.demolab.com?user=MeetOwaisAhmed&theme=monokai-metallian&hide_border=true&short_numbers=true" alt="MeetOwaisAhmed streak" />
+</a>
+</p>
 
-![GitHub Streak](https://streak-stats.demolab.com?user=MeetOwaisAhmed&theme=ambient-gradient&hide_border=true&border_radius=&card_width=550)
+
