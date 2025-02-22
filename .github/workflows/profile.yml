@@ -1,0 +1,23 @@
+name: Update GitHub Profile
+
+on:
+  schedule:
+    - cron: "0 0 * * *"  # Runs daily at midnight (UTC)
+  workflow_dispatch:  # Allows manual trigger
+
+jobs:
+  update-profile:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Update GitHub Profile Readme
+        run: |
+          git config --global user.name "MeetOwaisAhmed"
+          git config --global user.email "your-email@example.com"
+          git pull origin main  # Pull latest changes
+          date > last-updated.txt  # Create or update timestamp
+          git add last-updated.txt
+          git commit -m "Updated profile automatically on $(date)"
+          git push origin main
