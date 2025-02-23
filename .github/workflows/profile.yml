@@ -15,7 +15,7 @@ jobs:
       - name: Update GitHub Profile Readme
         run: |
           git config --global user.name "MeetOwaisAhmed"
-          git config --global user.email "your-email@example.com"
+          git config --global user.email "meetowaisahmed@gmail.com"
           git pull origin main
           date > last-updated.txt
           git add last-updated.txt
