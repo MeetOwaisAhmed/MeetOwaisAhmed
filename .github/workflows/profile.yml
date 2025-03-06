@@ -12,6 +12,9 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+
       - name: Update GitHub Profile Readme
         run: |
           git config --global user.name "MeetOwaisAhmed"
