@@ -2,8 +2,8 @@ name: Update GitHub Profile
 
 on:
   schedule:
-    - cron: "0 */12 * * *"  # Runs every 12 hours (at midnight & noon UTC)
-  workflow_dispatch:  # Allows manual trigger
+    - cron: "0 */12 * * *"  # Runs every 12 hours (midnight & noon UTC)
+  workflow_dispatch:  # Allows manual run
 
 jobs:
   update-profile:
@@ -11,11 +11,6 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v18
-        with:
-          node-version: 18
 
       - name: Update GitHub Profile Readme
         run: |
@@ -26,17 +21,3 @@ jobs:
           git add last-updated.txt
           git commit -m "Updated profile automatically on $(date)" || echo "No changes to commit"
           git push origin main
-
-      - name: Update Contribution Graph (GitHub Profile Summary)
-        uses: lowlighter/metrics@latest
-        with:
-          filename: metrics.svg
-          token: ${{ secrets.GITHUB_TOKEN }}
-          base: header, activity, community, repositories, metadata
-          plugin_lines: yes
-          plugin_languages: yes
-          plugin_followup: yes
-          plugin_repositories: yes
-          plugin_stars: yes
-          plugin_habits: yes
-          plugin_notable: yes
